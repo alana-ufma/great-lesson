@@ -1,0 +1,33 @@
+<div class="tab-pane fade {% if active_tab == 'discutindo' %} active show {% endif %}" id="v-pills-discutindo" role="tabpanel" aria-labelledby="v-pills-home-tab">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+            <i class="fas fa-book-open"></i><strong> Atividades de Discussão</strong>
+        </div>
+        <div class="card-body row">
+            <span class="col-md-2">
+              <i class="fas fa-info-circle fa-4x text-secondary "></i>
+            </span>
+            <span class="col-md-10">
+              <h3>Para alunos que gostam de discutir</h3>
+            Crie e forneça forúms de discussão e reuniões online!
+            </span>
+        </div>
+      </div>
+    </div>
+  </div>
+      <div class="row">
+           {% for recurso in aula.ensinos.all %}
+           <div class="col-6" style="padding-left:1px;padding-right:1px;">
+           <div class="card mt-1">
+              <div class="card-body">
+                <h5 class="card-title">{{recurso.nome}}</h5>
+                <p class="card-text">{{recurso.descricao|safe}}</p>
+                <a href="#" class="btn btn-primary">editar</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+</div>

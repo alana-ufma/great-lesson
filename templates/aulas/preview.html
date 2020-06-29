@@ -1,0 +1,265 @@
+{% extends 'preview.html' %}
+{% load static %}
+{% load meus_filtros %}
+{% block title %}  Aula {% endblock title %}
+{% block page_title %} Aula {% endblock page_title %}
+
+{% block subtitulo %}: {{aula.titulo}}{%endblock%}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/preview.css' %}">
+{% endblock %}
+
+{% block menu %}
+<ul>
+  <li class="nav-item mx-3"><a href="#inicio">INÍCIO</a></li>
+
+  {% if aula.leituras.all.count > 0 %}
+    <li class="nav-item mx-3"><a href="#lendo">LENDO</a></li>
+  {% endif %}
+
+  {% if aula.audios.all.count > 0 %}
+    <li class="nav-item mx-3"><a href="#escutando">ESCUTANDO</a></li>
+  {% endif %}
+
+  {% if aula.demos.all.count > 0 %}
+    <li class="nav-item mx-3"><a href="#observando">OBSERVANDO</a></li>
+  {% endif %}
+
+  {% if aula.videos.all.count > 0 %}
+    <li class="nav-item mx-3"><a href="#vendo-e-ouvindo">VENDO E OUVINDO</a></li>
+  {% endif %}
+
+  {% if aula.discussoes.all.count > 0 %}
+    <li class="nav-item mx-3"><a href="#discutindo">DISCUTINDO</a></li>
+  {% endif %}
+
+  {% if aula.praticas.all.count > 0 %}
+    <li class="nav-item mx-3"><a href="#fazendo">FAZENDO</a></li>
+  {% endif %}
+
+  {% if aula.ensinos.all.count > 0 %}
+    <li class="nav-item mx-3"><a href="#ensinando">ENSINANDO</a></li>
+  {% endif %}
+    <li class="nav-item mx-3"><a href="{% url 'core:catalogo' %}">CATÁLOGO</a></li>
+</ul>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="content">
+  <section id="inicio" style="height: 100vh;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{{aula.imagem.url}}" alt="">
+        </div>
+        <div class="col-md-6">
+          <h1>{{aula.titulo}}</h1>
+          <p>{{aula.descricao|safe}}</p>
+          <a href="#lendo" class="btn btn-outline-primary">Começar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if aula.leituras.all.count > 0 %}
+    <section id="lendo" style="height: 100vh;">
+       <div class="container">
+         <div class="row">
+           <div class="col center">
+             <h1>Atividades de Leitura</h1>
+           </div>
+         </div>
+         {% for recurso in aula.leituras.all %}
+         <div class="row">
+         <div class="col-md-8 mx-auto">
+           <div class="card bg-white text-dark mb-1" style="text-align:left; ">
+             <div class="card-body p-4">
+               <h5>{{recurso.nome}}</h5>
+               <p class="px-4">{{recurso.descricao|safe}}</p>
+             </div>
+
+             {% if recurso.arquivo %}
+             <a class="btn btn-light" target="_blank" href="{{recurso.arquivo.url }}"><i class="fas fa-file-pdf"></i> Arquivo</a>
+             {% endif %}
+
+           </div>
+         </div>
+         </div>
+         {% endfor %}
+       </div>
+    </section>
+  {% endif %}
+  {% if aula.audios.all.count > 0 %}
+  <section id="escutando" style="height: 100vh;">
+     <div class="container">
+       <div class="row">
+         <div class="col center">
+           <h1>Escute </h1>
+         </div>
+       </div>
+       {% for recurso in aula.audios.all %}
+       <div class="row">
+       <div class="col-md-8 mx-auto">
+         <div class="card bg-white text-dark mb-1" style="text-align:left; ">
+           <div class="card-body p-4">
+             <h5>{{recurso.nome}}</h5>
+             <p class="px-4">{{recurso.descricao|safe}}</p>
+           </div>
+
+           {% if recurso.arquivo %}
+           <a class="btn btn-light" target="_blank" href="{{recurso.arquivo.url }}"><i class="fas fa-file-pdf"></i> Arquivo</a>
+           {% endif %}
+
+         </div>
+       </div>
+       </div>
+       {% endfor %}
+     </div>
+  </section>
+  {% endif %}
+  {% if aula.demos.all.count > 0 %}
+    <section class="center"  id="observando" style="height: 100vh;">
+         <div class="container">
+          <div class="row">
+            <div class="col">
+              <h1>Atividades de Observação</h1>
+            </div>
+          </div>
+          {% for recurso in aula.demos.all %}
+          <div class="row">
+          <div class="col-md-8 mx-auto ">
+            <div class="card bg-white text-dark" style="text-align:left; ">
+              <div class="card-body p-4">
+                <h5>{{recurso.nome}}</h5>
+                <p class="px-4">{{recurso.descricao|safe}}</p>
+                {% if recurso.url %}
+                <div class="center">
+<iframe width="560" height="315" src="{{recurso.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          </div>
+          {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+    {% if aula.videos.all.count > 0 %}
+        <section class="center"  id="vendo-e-ouvindo" style="height: 100vh;">
+          <div class="container">
+            <div class="row">
+              <div class="col center">
+                <h1>Vendo e Ouvindo</h1>
+              </div>
+            </div>
+            {% for recurso in aula.videos.all %}
+            <div class="row">
+            <div class="col-md-8 mx-auto">
+              <div class="card bg-white text-dark mb-1" style="text-align:left; ">
+                <div class="card-body p-4">
+                  <h5>{{recurso.nome}}</h5>
+                  <p class="px-4">{{recurso.descricao|safe}}</p>
+                </div>
+
+                {% if recurso.arquivo %}
+                <a class="btn btn-light" target="_blank" href="{{recurso.arquivo.url }}"><i class="fas fa-file-pdf"></i> Arquivo</a>
+                {% endif %}
+                {% if recurso.url %}
+                <a class="btn btn-light" target="_blank" href="{{recurso.url }}"><i class="fas fa-link"></i> Acessar</a>
+                {% endif %}
+
+              </div>
+            </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+
+        {% endif %}
+        {% if aula.discussoes.all.count > 0 %}
+
+        <section class="center"  id="discutindo" style="height: 100vh;">
+          <div class="container">
+           <div class="row">
+             <div class="col">
+               <h1>Atividades de Discussão</h1>
+             </div>
+           </div>
+           {% for recurso in aula.discussoes.all %}
+           <div class="row">
+           <div class="col-md-8 mx-auto ">
+             <div class="card bg-white text-dark" style="text-align:left; ">
+               <div class="card-body p-4">
+                 <h5>{{recurso.nome}}</h5>
+                 <p class="px-4">{{recurso.descricao|safe}}</p>
+                 {% if recurso.url %}
+                 <div class="center">
+<iframe width="560" height="315" src="{{recurso.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                 </div>
+                 {% endif %}
+               </div>
+             </div>
+           </div>
+           </div>
+           {% endfor %}
+         </div>
+        </section>
+
+        {% endif %}
+        {% if aula.praticas.all.count > 0 %}
+
+        <section class="center" id="fazendo" style="height: 100vh;">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <h1>Atividades Prática</h1>
+              </div>
+            </div>
+            {% for recurso in aula.praticas.all %}
+            <div class="row">
+            <div class="col-md-8 mx-auto">
+              <div class="card bg-white text-dark" style="text-align:left; ">
+                <div class="card-body p-4">
+                  <h5>{{recurso.nome}}</h5>
+                  <p class="px-4">{{recurso.descricao|safe}}</p>
+                </div>
+              </div>
+            </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+
+        {% endif %}
+        {% if aula.ensinos.all.count > 0 %}
+
+        <section class="center"  id="ensinando" style="height: 100vh;">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <h1>Atividades de Ensino</h1>
+              </div>
+            </div>
+            {% for recurso in aula.ensinos.all %}
+            <div class="row">
+            <div class="col-md-8 mx-auto">
+              <div class="card bg-white text-dark" style="text-align:left; ">
+                <div class="card-body p-4">
+                  <h5>{{recurso.nome}}</h5>
+                  <p class="px-4">{{recurso.descricao|safe}}</p>
+                </div>
+              </div>
+            </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+        {% endif %}
+     </div>
+
+{% endblock content %}

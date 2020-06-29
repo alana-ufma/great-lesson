@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block title %}| Perfil {% endblock %}
+
+{% block pagetitle %}Perfil{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'accounts:dashboard'%}">Dashboard</a></li>
+<li class="breadcrumb-item active" aria-current="page">Perfil</li>
+{% endblock %}
+
+{% block content %}
+<section id="authoring-header" class="bg-primary text-white py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2><i class="fas fa-grip-horizontal"></i> Perfil </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background-color:#E6E9EC">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'accounts:dashboard'%}">Dashboard</a></li>
+        <li class="breadcrumb-item" aria-current="page">Perfil</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<section>
+<div class="container" style="min-height: 61vh;">
+  <div class="row my-4">
+    <div class="col-md-3">
+      <div class="card-body">
+        <div class="text-center card-box">
+          <div class="member-card">
+            <div class="thumb-xl member-thumb m-b-10 center-block">
+              {% if user.userprofile.image %}
+                   <img src="{{ user.userprofile.image.url }}" class="rounded-circle img-fluid img-thumbnail" alt="Profile Image">
+
+             {% endif  %}
+            </div>
+
+            <div class="">
+              <h5 class="m-b-5">{{ usuario.name }}</h5>
+              <p class="text-muted">{{ usuario.username }}</p>
+            </div>
+
+            <a href="{% url 'accounts:edit_profile' %}" class="btn btn-block btn-primary"><i class="fa fa-pencil m-r-5"></i> Editar Perfil</a>
+            <a href="{% url 'accounts:edit_password' %}" class="btn btn-block btn-primary"><i class="fa fa-lock m-r-5"></i> Alterar Senha</a>
+
+          </div>
+        </div>
+        <hr />
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="col card-box">
+        <div class="form-group row">
+          <label for="first_name" class="col-2 col-form-label">Nome</label>
+          <div class="col">
+            <input type="text" readonly class="form-control" id="first_name" value="{{ user.name }}">
+          </div>
+        </div>
+
+    <div class="form-group row">
+      <label for="username" class="col-2 col-form-label">Usuário</label>
+      <div class="col">
+        <input type="text" readonly class="form-control" id="username" value="{{ user.username }}">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="email" class="col-2 col-form-label">Email</label>
+      <div class="col">
+        <input type="text" readonly class="form-control" id="email" value="{{ user.email }}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="email" class="col-2 col-form-label">Site</label>
+      <div class="col">
+        <input type="text" readonly class="form-control" id="email" value="{{ user.userprofile.website }}">
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+
+
+{% endblock %}

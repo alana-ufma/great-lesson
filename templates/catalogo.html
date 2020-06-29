@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load meus_filtros %}
+{% block title %}  Aula {% endblock title %}
+{% block page_title %} Aula {% endblock page_title %}
+
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+
+   <section id="catalogo">
+    <div class="container mt-2">
+      <div class="row mx-auto center">
+        <div class="col-12">
+          <div class="info-header mb-5">
+            <h1 class="text-primary pb-3"></h1>
+           </div>
+        </div>
+      </div>
+          <div class="row">
+            {% for aula in aulas%}
+              <div class="col-lg-3 col-md-6">
+                  <div class="card mb-1">
+                    <div class="card-header">
+                      <a href="{% url 'aula:preview_aula' aula.slug %}">
+                        <img class="card-img-top img-fluid img-thumbnail" src="{{aula.imagem.url}}" alt="">
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <div class="card-title">
+                        <p>{{aula.titulo}}</p>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
+          </div>
+        </div>
+  </section>
+
+{% endblock content %}

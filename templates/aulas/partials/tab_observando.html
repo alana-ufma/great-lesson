@@ -1,0 +1,44 @@
+<div class="tab-pane fade {% if active_tab == 'observando' %} active show {% endif %}" id="v-pills-observando" role="tabpanel" aria-labelledby="v-pills-home-tab">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+            <i class="fas fa-book-open"></i><strong> Atividades Observação</strong>
+        </div>
+        <div class="card-body row">
+            <span class="col-md-2">
+              <i class="fas fa-info-circle fa-4x text-secondary "></i>
+            </span>
+            <span class="col-md-10">
+              <h3>Para alunos que gostam de observar</h3>
+              Crie e forneça demostração, exemplos de uso!
+            </span>
+        </div>
+      </div>
+    </div>
+  </div>
+      <div class="row">
+           {% for recurso in aula.demos.all %}
+           <div class="col" style="padding-left:1px;padding-right:1px;">
+           <div class="card mt-1">
+              <div class="card-body">
+                <h5 class="card-title">{{recurso.nome}}</h5>
+                <p class="card-text">{{recurso.descricao|safe}}</p>
+
+              </div>
+              <div class="card-footer text-muted">
+                    {% if recurso.arquivo %}
+                    <a class="btn btn-light" target="_blank" href="{{recurso.arquivo.url }}"><i class="fas fa-file-pdf"></i> Arquivo</a>
+                    {% endif %}
+
+                    {% if recurso.url %}
+                    <a class="btn btn-light" target="_blank" href="{{recurso.url }}"><i class="fas fa-link"></i> Acessar</a>
+                    {% endif %}
+
+                      <a href="{% url 'recurso:editar_recurso_aula' aula.slug recurso.id %}" class="btn btn-primary pull-right"><i class="fas fa-edit"></i> editar</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+</div>

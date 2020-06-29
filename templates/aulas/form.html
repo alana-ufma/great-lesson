@@ -1,0 +1,76 @@
+
+{% extends 'base.html' %}
+{% load meus_filtros %}
+{% block title %} Cadastro de Aula {% endblock title %}
+{% block page_title %} Cadastro de Aula {% endblock page_title %}
+
+{% block content %}
+<section class="bg-primary text-white py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2><i class="fas fa-grip-horizontal"></i> Aulas</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<section style="background-color:#E6E9EC">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'accounts:dashboard'%}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'aula:listar_aulas'%}">Aulas</a></li>
+        <li class="breadcrumb-item" aria-current="page">Cadastrar</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row">
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form_aula.media }}
+
+        <div class="form-group">
+            <label for="uf">{{ form_aula.titulo.label }}</label>
+            {{ form_aula.titulo|addclass:"form-control" }}
+            {% if form_aula.titulo.errors %}
+            <div class="alert alert-warning my-1" role="alert">
+                {{ form_aula.titulo.errors }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="uf">{{ form_aula.descricao.label }}</label> <br>
+            {{ form_aula.descricao|addclass:"form-control" }}
+            {% if form_aula.descricao.errors %}
+            <div class="alert alert-warning my-1" role="alert">
+                {{ form_aula.descricao.errors }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="uf">{{ form_aula.imagem.label }}</label>
+            {{ form_aula.imagem|addclass:"form-control" }}
+            {% if form_aula.imagem.errors %}
+            <div class="alert alert-warning my-1" role="alert">
+                {{ form_aula.imagem.errors }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Cadastrar">
+        </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+ {% endblock content %}

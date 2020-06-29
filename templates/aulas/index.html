@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}| Lista de Aulas {% endblock %}
+{% load gravatar %}
+
+{% block pagetitle %} Lista de Aulas{% endblock %}
+
+
+{% block content %}
+
+<section class="bg-primary text-white py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2><i class="fas fa-grip-horizontal"></i> Aulas</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<section style="background-color:#E6E9EC">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'accounts:dashboard'%}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'aula:listar_aulas'%}">Aulas</a></li>
+
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<section>
+  <div class="container" style="min-height:61vh">
+    <div class="row mt-2">
+    {% for aula in aulas %}
+        <div class="col-lg-3 col-md-4 card p-3">
+              {% if aula.imagem %}
+              <a href="{% url 'aula:buscar_aula' aula.slug %}"><img class="card-img-top img-fluid img-thumbnail" src="{{aula.imagem.url}}" alt="Card image cap"></a>
+                {% endif %}
+           <div class="card-body">
+            <p class="card-text">{{aula.titulo}}</p>
+          </div>
+          <a class="btn btn-primary btn-block" href="{% url 'aula:buscar_aula' aula.slug %}">Ver / Editar</a>
+        </div>
+    {% empty %}
+    <div class="alert alert-warning col-12" role="alert">
+      Nenhum aula criada por você.
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+
+
+
+{% endblock content %}

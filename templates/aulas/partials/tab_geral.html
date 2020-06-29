@@ -1,0 +1,56 @@
+{% load meus_filtros %}
+
+
+
+<div class="tab-pane fade {% if active_tab == 'gerais' %} active show {% endif %}" id="v-pills-geral" role="tabpanel" aria-labelledby="v-pills-home-tab">
+      <div class="row">
+          <div class="card">
+            <div class="card-header lead">
+                <i class="fas fa-clipboard"></i><strong> Dados Gerais da Aula</strong>
+            </div>
+            <div class="card-body">
+
+                <form method="post" action="{% url 'aula:editar_aula' aula.id %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form_aula.media }}
+
+                            <div class="form-group">
+                                <label for="uf">{{ form_aula.titulo.label }}</label>
+                                {{ form_aula.titulo|addclass:"form-control" }}
+                                {% if form_aula.titulo.errors %}
+                                <div class="alert alert-warning my-1" role="alert">
+                                    {{ form_aula.titulo.errors }}
+                                </div>
+                              {% endif %}
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="uf">{{ form_aula.descricao.label }}</label> <br>
+                                {{ form_aula.descricao|addclass:"form-control" }}
+                                {% if form_aula.descricao.errors %}
+                                <div class="alert alert-warning my-1" role="alert">
+                                    {{ form_aula.descricao.errors }}
+                                </div>
+                              {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="uf">{{ form_aula.imagem.label }}</label>
+                                {{ form_aula.imagem|addclass:"form-control" }}
+                                {% if form_aula.imagem.errors %}
+                                <div class="alert alert-warning my-1" role="alert">
+                                    {{ form_aula.imagem.errors }}
+                                </div>
+                              {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Cadastrar">
+                            </div>
+                </form>
+            </div>
+          </div>
+      </div>
+
+</div>

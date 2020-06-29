@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GReAT Lesson {% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+ {% block css %}{% endblock %}
+</head>
+
+<body>
+
+  <nav class="navbar fixed-top navbar-light bg-light">
+      <ul>
+          <li> <a href="{% url 'core:catalogo' %}" class="navbar-brand">
+             <img src="{% static 'images/logo-great.png' %}" width="50" height="50" alt="">
+             <h3 class="d-inline align-middle">GReAT Lesson {% block subtitulo %}{%endblock%}</h3>
+           </a>
+         </li>
+      </ul>
+      {% block menu %}{% endblock %}
+  </nav>
+
+<section>
+    {% block content %}{% endblock %}
+</section>
+
+
+   {% block javascript %}{% endblock %}
+
+
+
+</body>
+
+</html>

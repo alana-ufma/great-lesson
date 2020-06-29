@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GReAT Lesson {% block title %}{% endblock %}</title>
+
+  {% include 'partials/css_include.html' %}
+  {% block css %}{% endblock %}
+</head>
+
+<body>
+  {% include 'partials/_navbar.html' %}
+  {% block content %}{% endblock %}
+
+  <footer class="main-footer py-5 bg-dark text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-6 ml-auto">
+          <p class="lead">Copyright &copy; GReAT 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  {% include 'partials/js_include.html' %}
+  {% block javascript %}{% endblock %}
+</body>
+
+</html>

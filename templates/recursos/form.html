@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load meus_filtros %}
+{% block title %} Cadastro de Recurso {% endblock title %}
+{% block page_title %} Cadastro de Recurso {% endblock page_title %}
+
+{% block content %}
+
+<section class="bg-primary text-white py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2><i class="fas fa-grip-horizontal"></i> Aulas</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<section style="background-color:#E6E9EC">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'accounts:dashboard'%}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'aula:listar_aulas'%}">Aulas</a></li>
+        <!-- <li class="breadcrumb-item"><a href="{% url 'aula:buscar_aula' aula.id %}">{{ aula.titulo}}</a></li> -->
+        <li class="breadcrumb-item">Editar Atividade</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row mt-2">
+      <form method="post">
+          {% csrf_token %}
+
+          {{ form_recurso.media }}
+
+          <div class="form-group">
+              <label for="uf">{{ form_recurso.nome.label }}</label>
+              {{ form_recurso.nome|addclass:"form-control" }}
+              {% if form_recurso.nome.errors %}
+              <div class="alert alert-warning my-1" role="alert">
+                  {{ form_recurso.nome.errors }}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="form-group">
+              <label for="uf">{{ form_recurso.descricao.label }}</label> <br>
+              {{ form_recurso.descricao|addclass:"form-control" }}
+              {% if form_recurso.descricao.errors %}
+              <div class="alert alert-warning my-1" role="alert">
+                  {{ form_recurso.descricao.errors }}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="form-group">
+              <label for="uf">{{ form_recurso.url.label }}</label>
+              {{ form_recurso.url|addclass:"form-control" }}
+              {% if form_recurso.url.errors %}
+              <div class="alert alert-warning my-1" role="alert">
+                  {{ form_recurso.url.errors }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="form-group">
+              <label for="uf">{{ form_recurso.arquivo.label }}</label>
+              {{ form_recurso.arquivo|addclass:"form-control" }}
+              {% if form_recurso.arquivo.errors %}
+              <div class="alert alert-warning my-1" role="alert">
+                  {{ form_recurso.arquivo.errors }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="form-layout-footer">
+          <input type="submit" class="btn btn-primary" value="Cadastrar">
+          {% if form_recurso.instance.id %}
+          <a href="{% url 'recurso:remover_recurso_aula' aula.slug form_recurso.instance.id %}" class="btn btn-danger float-right"><i class="fa fa-trash mg-r-10"></i> Excluir Atividade</a>
+          {% endif %}
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+
+    </div>
+{% endblock content %}

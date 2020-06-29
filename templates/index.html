@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% load staticfiles  %}
+
+
+{% block content %}
+<section id="showcase" class="py-5">
+  <div class="primary-overlay text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 align-self-center">
+            <img src="/static/images/logo-great.png" alt="" class="img-fluid d-none d-lg-block">
+          </div>
+        <div class="col-lg-6 text-center">
+          <h1 class="display-2 mt-5 pt-5">
+             GReAT Lesson
+          </h1>
+          <p class="lead">Planeje e organize o conteúdo de suas aulas de forma intuitiva e ordenada, de modo a faciliar o encadeamento dos assuntos que serão lecionados. </p>
+          <a href="#modules" class="btn btn-outline-secondary btn-lg text-white"><i class="fa fa-arrow-right"></i> Saiba mais</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="searchbox" class="bg-dark text-white py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="lead text-muted">Quer ficar por dentro das novidades?</p>
+      </div>
+
+    </div>
+        <form method="POST">
+        {{ form.non_field_errors }}
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-4">
+            <input type="text" name="name" id="name" class="form-control form-control-lg" placeholder="Informar Nome">
+          </div>
+          <div class="col-md-4">
+            <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="Informar Email">
+          </div>
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fas fa-envelope"></i> Inscreva-se</button>
+          </div>
+        </div>
+      </form>
+     <div class="row pt-2">
+         <div class="col mt-3">
+          {% for message in messages %}
+             <div class="alert alert-{{ message.tags }} alert-dismissible text-center" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+              <strong>
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <i class="fas fa-exclamation-triangle"></i>
+                {% else %}
+                <i class="fas fa-check"></i>
+                {% endif %}
+              </strong>
+              {{ message }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+</section>
+
+<section class="my-5 text-center">
+  <div class="container">
+    <div class="row">
+     <div class="col-md-6">
+       <h1 class="mt-4">
+        Aprenda e ensine da forma mais completa!
+       </h1>
+     </div>
+     <div class="col-md-6">
+       <p class="lead text-justify">
+         Cada indivíduo tem seu jeito proprio de apender! Contudo, é sabido que o nível de envolvimento, ou a falta deste, com o objeto de estudo pode ser decisivo no caminho ate o aprendizado. Traçar um caminho de aprendizado e uma estratégia é significativa para adiquirir conhecimento rapidamente e melhorar a retenção do conhecimento.
+       </p>
+     </div>
+    </div>
+  </div>
+</section>
+ 
+<section class="my-5 text-center bg-light text-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1  class="my-4">
+          Como alunos aprendem!
+        </h1>
+      </div>
+    </div>
+    <div class="row">
+     <div class="col-md-6">
+          <img src="/static/images/piramide.png" alt="" class="img-fluid d-none d-lg-block">
+     </div>
+     <div class="col-md-6">
+
+       <p class="lead text-justify">
+         Atividades como leitura, vídeo-aulas, resenhas e trabalhos em equipe, são exemplos de atividades que podem ser utilizadas para o ensino! Mas qual seria a melhor escolha? em que ordem? De acordo com a pirâmide de retenção proposta por [Dale and Nyland 1960]:
+          <ul>
+            <li>10% do conhecimento é retido se o aluno apenas lê;</li>
+            <li>30% se só observa;</li>
+            <li>50% vendo e ouvindo;</li>
+            <li>70% discutindo com os outros;</li>
+            <li>80% fazendo;</li>
+            <li>95% quando tem a oportunidade de ensinar o que aprendeu.</li>
+          </ul>
+       </p>
+     </div>
+    </div>
+  </div>
+</section>
+<section id="modules" class="my-5 text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-5">
+          <h1 class="text-primary pb-3">Suporte para construções de materiais...</h1>
+         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 pb-2">
+        <div class="card">
+          <div class="card-body">
+            <i class="fas fa-book-open fa-4x mb-4"></i>
+            <h3>Para alunos que <br> gostam de ler</h3>
+            <hr>
+            <p class="lead">Crie e forneça livros, apostilas, e-books, artigos, dissertações!</p>
+           </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <i class="fas fa-film fa-4x mb-4"></i>
+            <h3>Para alunos que  <br> gostam de assistir</h3>
+            <hr>
+            <p class="lead">Crie e forneça tutoriais, documentários, vídeo-aulas!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <i class="fas fa-comments fa-4x mb-4"></i>
+            <h3>Para alunos que <br>  gostam de discutir</h3>
+            <hr>
+            <p class="lead">Crie e forneça forúms de discussão e reuniões online!</p>
+           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 pb-2">
+        <div class="card">
+          <div class="card-body">
+            <i class="fas fa-volume-up fa-4x mb-4"></i>
+
+            <h3>Para alunos que <br> gostam de escutar</h3>
+            <hr>
+            <p class="lead">Crie e forneça podcasts, músicas, áudio books!</p>
+           </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <i class="fas fa-chalkboard-teacher fa-4x mb-4"></i>
+            <h3>Para alunos que  <br> gostam de ensinar</h3>
+            <hr>
+            <p class="lead">Crie e forneça trabalhos em grupo e reuniões de ensino colaborativo!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <i class="fas fa-edit fa-4x mb-4"></i>
+            <h3>Para alunos que <br>  gostam de praticar</h3>
+            <hr>
+            <p class="lead">Crie e forneça atividades, lista de exercícios, redações!</p>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

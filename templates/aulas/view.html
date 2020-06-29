@@ -1,0 +1,62 @@
+
+{% extends 'base.html' %}
+{% load meus_filtros %}
+{% block title %} Cadastro de Aula {% endblock title %}
+{% block page_title %} Cadastro de Aula {% endblock page_title %}
+
+{% block content %}
+
+<section class="bg-primary text-white py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2><i class="fas fa-grip-horizontal"></i> Aulas</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<section style="background-color:#E6E9EC">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'accounts:dashboard'%}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'aula:listar_aulas'%}">Aulas</a></li>
+        <li class="breadcrumb-item" aria-current="page">{{ aula.titulo }}</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+<section style="min-height: 65vh;">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-lg-3 col-md-4">
+      {% include './partials/sidebar.html' %}
+    </div>
+    <div class="col-lg-9 col-md-8">
+      <div class="tab-content" id="v-pills-tabContent">
+        {% include './partials/tab_geral.html' %}
+        {% include './partials/tab_lendo.html' %}
+        {% include './partials/tab_observando.html' %}
+        {% include './partials/tab_assistindo.html' %}
+        {% include './partials/tab_discutindo.html' %}
+        {% include './partials/tab_praticando.html' %}
+        {% include './partials/tab_ensinando.html' %}
+        {% include './partials/tab_form.html' %}
+      </div>
+      </div>
+    </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+ {% endblock content %}

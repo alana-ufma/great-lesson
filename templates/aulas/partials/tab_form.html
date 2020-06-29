@@ -1,0 +1,74 @@
+{% load meus_filtros %}
+
+<div class="tab-pane fade {% if active_tab == 'form' %} active show {% endif %}" id="v-pills-adicionando" role="tabpanel" aria-labelledby="v-pills-home-tab">
+      <div class="row">
+          <div class="card">
+            <div class="card-header lead">
+                <i class="fas fa-book-open"></i><strong> Adicionar nova atividade</strong>
+            </div>
+            <div class="card-body">
+
+                <form method="post" action="{% url 'recurso:salvar_recurso_aula' aula.id %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form_recurso.media }}
+                            <div class="form-group">
+                              <label for="tipo">Tipo</label>
+                              <select name="tipo" class="form-control" required="" id="id_tipo">
+                                <option value="" selected="">---------</option>
+                                <option value="1">Lendo: Manual, Slides, Artigos, ...</option>
+                                <option value="2">Ouvindo: Podcast, audio books, ...</option>
+                                <option value="3">Observando: Palestras, Vídeos demostrativos </option>
+                                <option value="4">Vendo e Ouvindo: Vídeos</option>
+                                <option value="5">Discutindo: Fóruns, Chats</option>
+                                <option value="6">Fazendo: Atividades Práticas</option>
+                                <option value="7">Ensinando: Fóruns</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="uf">{{ form_recurso.nome.label }}</label>
+                                {{ form_recurso.nome|addclass:"form-control" }}
+                                {% if form_recurso.nome.errors %}
+                                <div class="alert alert-warning my-1" role="alert">
+                                    {{ form_recurso.nome.errors }}
+                                </div>
+                              {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <label for="uf">{{ form_recurso.descricao.label }}</label> <br>
+                                {{ form_recurso.descricao|addclass:"form-control" }}
+                                {% if form_recurso.descricao.errors %}
+                                <div class="alert alert-warning my-1" role="alert">
+                                    {{ form_recurso.descricao.errors }}
+                                </div>
+                              {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="uf">{{ form_recurso.url.label }}</label>
+                                {{ form_recurso.url|addclass:"form-control" }}
+                                {% if form_recurso.url.errors %}
+                                <div class="alert alert-warning my-1" role="alert">
+                                    {{ form_recurso.url.errors }}
+                                </div>
+                              {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="uf">{{ form_recurso.arquivo.label }}</label>
+                                {{ form_recurso.arquivo|addclass:"form-control" }}
+                                {% if form_recurso.arquivo.errors %}
+                                <div class="alert alert-warning my-1" role="alert">
+                                    {{ form_recurso.arquivo.errors }}
+                                </div>
+                              {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Cadastrar">
+                            </div>
+                        </form>
+
+            </div>
+          </div>
+      </div>
+
+</div>

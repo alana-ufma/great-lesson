@@ -1,0 +1,113 @@
+body {
+  margin-top: 105px; }
+
+.h-80{
+  height: 100vh;
+}
+
+.pointer {cursor: pointer;}
+
+
+.img-avatar {
+     height: 45px;
+     margin: 0 10px;
+     }
+
+.navbar {
+  opacity: 0.9;
+  background: #fff; }
+  .navbar .nav-item .nav-item {
+    font-size: 1.4rem;
+    padding-right: 20px; }
+ol.breadcrumb{
+  margin-bottom: 0px !important;
+}
+#content-page{
+    opacity: 0.9;
+    background: #fafafa;
+}
+#showcase {
+  position: relative;
+  background: url("../images/background.jpg");
+  min-height: 580px; }
+  #showcase .primary-overlay {
+    background: rgba(50, 146, 166, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
+
+#showcase-inner {
+  background: url("../images/background.jpg") no-repeat top center fixed/cover;
+  position: relative;
+  overflow: hidden;
+  min-height: 400px; }
+  #showcase-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    width: 100%;
+    background: rgba(79, 91, 160, 0.8); }
+  #showcase-inner.showcase-search {
+    min-height: 120px; }
+
+.info-header {
+  width: 50%;
+  margin: auto;
+  border-bottom: 1px #ddd solid; }
+
+.title-header {
+
+    margin: auto;
+    border-bottom: 1px #ddd solid; }
+.page-header {
+  margin: auto;
+  border-bottom: 1px #ddd solid; }
+
+#modules img {
+  margin-top: -50px; }
+
+#modules .fa {
+  font-size: 24px; }
+
+#modules .card p {
+  min-height: 100px; }
+
+#portfolio,#gamecenter, #authoring, #catalog, #classroom, #content-page {
+  min-height: 575px; }
+
+.icon-card{
+    font-size: 70px;
+}
+
+#quiz-preview{
+  min-height: 600px;
+}
+.game_card_img {
+  object-fit: none; /* Do not scale the image */
+  object-position: center center; /* Center the image within the element */
+  background-repeat: no-repeat;
+  width: 100%;
+  max-height: 150px;
+  min-height: 150px;
+  margin-bottom: 1rem;
+  vertical-align: middle;
+}
+
+
+.modal-content{
+   max-height: 100%; /*altura da modal*/
+}
+
+.modal-dialog{
+   height: 100%; /*altura da view da modal*/
+   margin-top: 0;
+}
+
+.modal-body{
+   overflow: auto; /*habilita o overflow no corpo da modal*/
+}

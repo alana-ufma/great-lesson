@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}| Recursos {% endblock %}
+{% load gravatar %}
+
+{% block pagetitle %} Lista de Aulas{% endblock %}
+
+
+{% block content %}
+
+<section class="bg-primary text-white py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2><i class="fas fa-grip-horizontal"></i> Aulas</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row">
+        {% for aula in aulas %}
+      <div class="col-md-6">
+          <div class="card my-3">
+              <div class="card-body">
+
+                  <div class="d-flex flex-column flex-sm-row">
+                        {% if aula.imagem %}
+                      <a href="#" class="avatar mb-3 w-xs-plus-down-100 mr-sm-3">
+                          <img src="{{aula.imagem.url}}" alt="" class="">
+                      </a>
+                          {% endif %}
+                      <div class="flex" style="min-width: 200px;">
+                          <div class="d-flex">
+                              <div>
+                                  <h4 class="card-title mb-1"><a href="{% url 'aula:buscar_aula' aula.id %}">{{aula.titulo}}</a></h4>
+                                  <p class="text-muted">{{aula.descricao|safe}} imagem:{{ aula.foto.url }}</p>
+                              </div>
+                              <div class="dropdown ml-auto">
+                                  <a href="#" class="dropdown-toggle text-muted" data-caret="false" data-toggle="dropdown">
+
+                                  </a>
+                                  <div class="dropdown-menu dropdown-menu-right">
+                                      <a class="dropdown-item" href="#">Edit Course</a>
+                                      <a class="dropdown-item" href="#">Statistics</a>
+                                      <div class="dropdown-divider"></div>
+                                      <a class="dropdown-item text-danger" href="#">Archive</a>
+                                  </div>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+       {% endfor %}
+    </div>
+
+
+  </div>
+</section>
+
+
+{% endblock content %}
