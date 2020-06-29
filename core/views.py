@@ -3,14 +3,12 @@ from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from .forms import NewsletterForm
 from .models import NewsletterSubscription
-
+from aula.service import get_aulas
 
 def index(request):
     context = {}
     form = NewsletterForm(request.POST or None)
-    print('aqui 1')
     if form.is_valid():
-        print('aqui 2')
         name = request.POST['name']
         email = request.POST['email']
 
