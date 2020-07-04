@@ -28,7 +28,7 @@ ol.breadcrumb{
 }
 #showcase {
   position: relative;
-  background: url("../images/background.jpg");
+  background: url("../images/background.png");
   min-height: 580px; }
   #showcase .primary-overlay {
     background: rgba(50, 146, 166, 0.8);
@@ -40,7 +40,7 @@ ol.breadcrumb{
 
 
 #showcase-inner {
-  background: url("../images/background.jpg") no-repeat top center fixed/cover;
+  background: url("../images/background.png") no-repeat top center fixed/cover;
   position: relative;
   overflow: hidden;
   min-height: 400px; }

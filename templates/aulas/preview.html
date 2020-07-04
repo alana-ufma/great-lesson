@@ -85,6 +85,10 @@
              {% if recurso.arquivo %}
              <a class="btn btn-light" target="_blank" href="{{recurso.arquivo.url }}"><i class="fas fa-file-pdf"></i> Arquivo</a>
              {% endif %}
+              {% if recurso.url %}
+                <a class="btn btn-light" target="_blank" href="{{recurso.url }}"><i class="fas fa-link"></i> Acessar</a>
+                {% endif %}
+
 
            </div>
          </div>
@@ -199,8 +203,7 @@
                  <p class="px-4">{{recurso.descricao|safe}}</p>
                  {% if recurso.url %}
                  <div class="center">
-<iframe width="560" height="315" src="{{recurso.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                 </div>
+<a class="btn btn-primary btn-block" target="_blank" href="{{recurso.url }}"><i class="fas fa-comments"></i> Acessar</a>
                  {% endif %}
                </div>
              </div>
@@ -217,7 +220,7 @@
           <div class="container">
             <div class="row">
               <div class="col">
-                <h1>Atividades Prática</h1>
+                <h1>Atividades Práticas</h1>
               </div>
             </div>
             {% for recurso in aula.praticas.all %}
@@ -227,6 +230,10 @@
                 <div class="card-body p-4">
                   <h5>{{recurso.nome}}</h5>
                   <p class="px-4">{{recurso.descricao|safe}}</p>
+
+  {% if recurso.url %}
+                <a class="btn btn-block btn-info" target="_blank" href="{{recurso.url }}"><i class="fas fa-link"></i> Submeter Tarefa</a>
+                {% endif %}
                 </div>
               </div>
             </div>
